@@ -1,0 +1,6 @@
+# KBLT
+Kitchen-based light tomography
+
+Python packages related to building a KBLT scanner based on the following publication:
+Emanuel Larsson, Doga Gürsoy, and Stephen A. Hall. Kitchen-Based Light Tomography – a DIY toolkit for advancing tomography - by and for the tomography community. Tomography of Materials and Structures, 2022.
+URL: https://authors.elsevier.com/sd/article/S2949-673X(22)00001-8

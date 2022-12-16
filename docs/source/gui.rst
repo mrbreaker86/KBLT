@@ -1,7 +1,7 @@
 GUI - Graphical User Interface
 ==============================
 
-	.. image:: photos/gui.png
+	.. image:: photos/GUI.png
 	  :width: 800
 	  :alt: KBLT GUI
 

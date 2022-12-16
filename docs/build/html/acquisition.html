@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acquisition &mdash; KBLT 2022.12.14 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GUI - Graphical User Interface" href="gui.html" />
+    <link rel="prev" title="API Reference" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> KBLT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Acquisition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#startallscans">StartAllScans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#startscan">StartScan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initiate-translation-stage">Initiate Translation Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initiate-rotation-stage">Initiate Rotation Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#led-blinking">LED blinking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#led-solid-light">LED solid light</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audiomessage">AudioMessage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gui.html">GUI - Graphical User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconstruction.html">Reconstruction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="album.html">Photo Album</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Data Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recon_seg_scripts.html">Reconstruction and segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KBLT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="api.html">API Reference</a> &raquo;</li>
+      <li>Acquisition</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/acquisition.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="acquisition">
+<h1>Acquisition<a class="headerlink" href="#acquisition" title="Permalink to this headline"></a></h1>
+<p>KBLT Python code for acqusition can be found on GitHub:
+<span id="id1">[<a class="reference internal" href="credits.html#id10" title="Emanuel Larsson. KBLT - kitchen-based light tomography. URL: https://github.com/mrbreaker86/KBLT (visited on 2022-12-15).">B1</a>]</span></p>
+<div class="section" id="startallscans">
+<h2>StartAllScans<a class="headerlink" href="#startallscans" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt id="scan.StartAllScans">
+<code class="sig-prename descclassname"><span class="pre">scan.</span></code><code class="sig-name descname"><span class="pre">StartAllScans</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manual_sample_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noproj_acq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomo_reps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_diff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomo_count_from</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email_recipent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scan.StartAllScans" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-scan.StartAllScans"></span><p>Starts all scans (both single and repetitive ones) with the respective scanning parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param y0</dt>
+<dd class="field-odd"><p>y coordinate</p>
+</dd>
+<dt class="field-even">type y0</dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="startscan">
+<h2>StartScan<a class="headerlink" href="#startscan" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt id="scan.StartAllScans.scan.StartScan">
+<code class="sig-prename descclassname"><span class="pre">scan.</span></code><code class="sig-name descname"><span class="pre">StartScan</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proj_skip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scan.StartAllScans.scan.StartScan" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-scan.StartScan"></span><p>Starts the scan with the respective scanning parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param x0</dt>
+<dd class="field-odd"><p>x coordinate</p>
+</dd>
+<dt class="field-even">type x0</dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="initiate-translation-stage">
+<h2>Initiate Translation Stage<a class="headerlink" href="#initiate-translation-stage" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt id="scan.StartScan.scan.Initiate_translation_stage">
+<code class="sig-prename descclassname"><span class="pre">scan.</span></code><code class="sig-name descname"><span class="pre">Initiate_translation_stage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GPIOno_trans_on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GPIOno_trans_off</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scan.StartScan.scan.Initiate_translation_stage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-scan.Initiate_translation_stage"></span><p>Initiates the translation stages using the relay board, using 4 different inputs.</p>
+<p>Direction is either True or False depending on the direction of the rotation of the given stepper motor.</p>
+<p>Translation steps defines the total lenght of travel in cm.</p>
+<p>GPIOno_trans_on and GPIOno_trans_off contain 4 given port numbers on the GPIO board connected to a given stepper motor via the relay board.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param direction</dt>
+<dd class="field-odd"><p>direction boolean</p>
+</dd>
+<dt class="field-even">type direction</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+<dt class="field-odd">param trans_step</dt>
+<dd class="field-odd"><p>trans_step boolean</p>
+</dd>
+<dt class="field-even">type trans_step</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+<dt class="field-odd">param GPIOno_trans_on</dt>
+<dd class="field-odd"><p>GPIOno_trans_on ndarray</p>
+</dd>
+<dt class="field-even">type GPIOno_trans_on</dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+<dt class="field-odd">param GPIOno_trans_off</dt>
+<dd class="field-odd"><p>GPIOno_trans_off ndarray</p>
+</dd>
+<dt class="field-even">type GPIOno_trans_off</dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="initiate-rotation-stage">
+<h2>Initiate Rotation Stage<a class="headerlink" href="#initiate-rotation-stage" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt id="scan.Initiate_translation_stage.scan.Initiate_rotation_stage">
+<code class="sig-prename descclassname"><span class="pre">scan.</span></code><code class="sig-name descname"><span class="pre">Initiate_rotation_stage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scan_mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_projections</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scan.Initiate_translation_stage.scan.Initiate_rotation_stage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-scan.Initiate_rotation_stage"></span><p>Initiates the rotation stage.</p>
+<p>Scan mode accepts the following integer values 1, 2, 4, 8, 16, and 32.</p>
+<p>No. projections is usually set to 200 over 360 degrees.
+By using 200 projections and scan mode 1, the angular step over 360 degrees is 1.8 degrees per projection.
+By using 200 projections and scan mode 2, the angular step over 360 degrees is 0.9 degrees per projection, which in turn results in 400 projections over 360 degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param scan_mode</dt>
+<dd class="field-odd"><p>scan mode integer</p>
+</dd>
+<dt class="field-even">type scan_mode</dt>
+<dd class="field-even"><p>accepts the following integer values 1, 2, 4, 8, 16, and 32.</p>
+</dd>
+<dt class="field-odd">param no_projections</dt>
+<dd class="field-odd"><p>no_projections integer</p>
+</dd>
+<dt class="field-even">type no_projections</dt>
+<dd class="field-even"><p>usually set to 200 over 360 degrees.</p>
+</dd>
+<dt class="field-odd">param SPR</dt>
+<dd class="field-odd"><p>SPR integer</p>
+</dd>
+<dt class="field-even">type SPR</dt>
+<dd class="field-even"><p>Steps per revolution over 360 degrees</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>The code has been reproduced from ROTOTRON 2004. Raspberry pi stepper motor tutorial. Guide available on: <a class="reference external" href="https://www.rototron.info/raspberry-pi-stepper-motor-tutorial/">ROTOTRON_guide</a>.</dt><dd></dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="led-blinking">
+<h2>LED blinking<a class="headerlink" href="#led-blinking" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt id="scan.Initiate_rotation_stage.scan.led_blinking_green">
+<code class="sig-prename descclassname"><span class="pre">scan.</span></code><code class="sig-name descname"><span class="pre">led_blinking_green</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">led_port</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scan.Initiate_rotation_stage.scan.led_blinking_green" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-scan.led_blinking_green"></span><p>An LED light connected to the given port number on the GPIO board will blink when this function is called from a loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param led_port</dt>
+<dd class="field-odd"><p>led_port integer</p>
+</dd>
+<dt class="field-even">type led_port</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="led-solid-light">
+<h2>LED solid light<a class="headerlink" href="#led-solid-light" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt id="scan.led_blinking_green.scan.led_onoff_green">
+<code class="sig-prename descclassname"><span class="pre">scan.</span></code><code class="sig-name descname"><span class="pre">led_onoff_green</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ledpower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">led_port</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scan.led_blinking_green.scan.led_onoff_green" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-scan.led_onoff_green"></span><p>An LED light connected to the given port number on the GPIO board will turn on or off when this function is called.
+We turned on the LED will have a solid light. The LED is turned on and off using the ledpower parameter which can be set to either True (on) or False (off).</p>
+<dl class="field-list simple">
+<dt class="field-odd">param led_port</dt>
+<dd class="field-odd"><p>led_port integer</p>
+</dd>
+<dt class="field-even">type led_port</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param ledpower</dt>
+<dd class="field-odd"><p>ledpower boolean</p>
+</dd>
+<dt class="field-even">type ledpower</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="audiomessage">
+<h2>AudioMessage<a class="headerlink" href="#audiomessage" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt id="scan.led_onoff_green.scan.AudioMessage">
+<code class="sig-prename descclassname"><span class="pre">scan.</span></code><code class="sig-name descname"><span class="pre">AudioMessage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scan.led_onoff_green.scan.AudioMessage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-scan.AudioMessage"></span><p>Set the language of the warning message. The input is just a string, e.g. &quot;English f&quot; or &quot;English m&quot;, where f and m stand for female and male voice, respectively.</p>
+<p>Pre-recorded mp3 audio files are read in and played for the user via the speakers.</p>
+<p>Note: Personal audio files in any given language can be recorded with e.g. Windows Voice Recorder and saved down in m4a format.
+m4a files can then be conerted to mp3 format using the pydub package. For more info please see: <a class="reference external" href="https://pypi.org/project/pydub/">https://pypi.org/project/pydub/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">param lang</dt>
+<dd class="field-odd"><p>lang string</p>
+</dd>
+<dt class="field-even">type lang</dt>
+<dd class="field-even"><p>text</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gui.html" class="btn btn-neutral float-right" title="GUI - Graphical User Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Emanuel Larsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

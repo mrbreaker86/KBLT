@@ -6,7 +6,7 @@ Emanuel Larsson, Doga Gürsoy, and Stephen A. Hall. Kitchen-Based Light Tomogra
 URL: https://authors.elsevier.com/sd/article/S2949-673X(22)00001-8
 
 # Read The Docs
-A Read The Docs on KBLT is available on the following link:
+A Read The Docs page on KBLT is available on the following link:
 https://kblt.readthedocs.io/
 
 # License

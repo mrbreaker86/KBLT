@@ -8,6 +8,8 @@ URL: https://doi.org/10.1016/j.tmater.2022.100001
 # Read The Docs
 A Read The Docs page on KBLT is available on the following link:
 https://kblt.readthedocs.io/
+KBLT datasets can be found on the TomoBank repository:
+https://tomobank.readthedocs.io/en/latest/source/data/docs.data.kblt.html
 
 # License
 The project is licensed under the BSD-3 license:

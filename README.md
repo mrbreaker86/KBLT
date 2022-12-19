@@ -9,7 +9,7 @@ URL: https://doi.org/10.1016/j.tmater.2022.100001
 A Read The Docs page on KBLT is available on the following link:
 https://kblt.readthedocs.io/
 
-KBLT datasets can be found on the TomoBank repository:
+KBLT datasets inlcuding a Python reconstruction script can be found on the TomoBank repository:
 https://tomobank.readthedocs.io/en/latest/source/data/docs.data.kblt.html
 
 # License

@@ -2,6 +2,10 @@
 # Read the Docs configuration file
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 version: 2
+build:
+  os: "rasbian"
+  tools:
+    python: "3.11"
 sphinx:
   configuration: docs/source/conf.py
 python:

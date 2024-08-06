@@ -36,7 +36,8 @@ release = '2022.12.14'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 #extensions = ['sphinx.ext.autodoc']
-extensions = ['sphinx.ext.napoleon', 'sphinx.ext.autodoc', 'sphinx_rtd_theme', 'sphinx.ext.autosummary', 'nbsphinx', 'sphinxcontrib.bibtex']
+#extensions = ['sphinx.ext.napoleon', 'sphinx.ext.autodoc', 'sphinx_rtd_theme', 'sphinx.ext.autosummary', 'nbsphinx', 'sphinxcontrib.bibtex']
+extensions = ['sphinx.ext.napoleon', 'sphinx.ext.autodoc', 'alabaster', 'sphinx.ext.autosummary', 'nbsphinx', 'sphinxcontrib.bibtex']
 
 bibtex_bibfiles = ['bibtex/news.bib',
 'bibtex/related_projects.bib',

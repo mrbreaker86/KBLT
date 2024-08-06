@@ -1,4 +1,4 @@
-# KBLT
+# KBLT - Acquisition
 Kitchen-based light tomography
 
 Python packages related to building a KBLT scanner based on the following publication:

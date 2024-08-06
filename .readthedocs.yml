@@ -6,7 +6,8 @@ build:
   os: "ubuntu-22.04"
   tools:
     python: "3.6"
-    sphinx:
-  builder: html
-  configuration: docs/source/conf.py
-  fail_on_warning: true
+    
+  sphinx:
+    builder: html
+    configuration: docs/source/conf.py
+    fail_on_warning: true

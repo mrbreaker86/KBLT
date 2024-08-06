@@ -13,14 +13,14 @@ KBLT datasets inlcuding a Python reconstruction script can be found on the TomoB
 https://tomobank.readthedocs.io/en/latest/source/data/docs.data.kblt.html
 
 # Videos
-KBLT - a home-based educational scanner for training the next generation of tomography users
-https://youtu.be/5JE8P750grI?si=w2s0LX7yvzAQ944y
+KBLT - a home-based educational scanner for training the next generation of tomography users, kbltomo,
+URL: https://youtu.be/5JE8P750grI?si=w2s0LX7yvzAQ944y
 
-Video footage of Emanuel Larsson's kitchen-based light tomography (KBLT) scanner.
-https://youtu.be/IG4SvcRGRfY?si=UwERPNYt_4WBkfI_
+Video footage of Emanuel Larsson's kitchen-based light tomography (KBLT) scanner, LINXS,
+URL: https://youtu.be/IG4SvcRGRfY?si=UwERPNYt_4WBkfI_
 
-Emanuel Larsson - Building a Portable Raspberry Pi based Light Tomography Scanner
-https://youtu.be/KAj9EboFGxM?si=HiFg6M2iMmniZDUk
+Emanuel Larsson - Building a Portable Raspberry Pi based Light Tomography Scanner, Raspberry Pint,
+URL: https://youtu.be/KAj9EboFGxM?si=HiFg6M2iMmniZDUk
 
 # License
 The project is licensed under the BSD-3 license:

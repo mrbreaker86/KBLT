@@ -37,7 +37,7 @@ release = '2022.12.14'
 # ones.
 #extensions = ['sphinx.ext.autodoc']
 #extensions = ['sphinx.ext.napoleon', 'sphinx.ext.autodoc', 'sphinx_rtd_theme', 'sphinx.ext.autosummary', 'nbsphinx', 'sphinxcontrib.bibtex']
-extensions = ['sphinx.ext.napoleon', 'sphinx.ext.autodoc', 'alabaster', 'sphinx.ext.autosummary', 'sphinxcontrib.bibtex']
+extensions = ['sphinx.ext.napoleon', 'sphinx.ext.autodoc', 'alabaster', 'sphinx.ext.autosummary']
 
 bibtex_bibfiles = ['bibtex/news.bib',
 'bibtex/related_projects.bib',
